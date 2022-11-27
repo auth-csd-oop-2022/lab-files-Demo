@@ -55,6 +55,17 @@ public class Main {
             e.printStackTrace();
         }
 
+        // read characters
+        try (BufferedReader buffer = new BufferedReader(new FileReader(outFile))) {
+            int c = buffer.read();
+            while (c != -1) {
+                char ch = (char) c;
+                System.out.println(ch);
+                c = buffer.read();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         // write binary
         List<String> list = Arrays.asList("george", "maria");
