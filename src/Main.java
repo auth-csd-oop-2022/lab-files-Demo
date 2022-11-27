@@ -4,7 +4,7 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        String outFile = "outfile.txt";
+        String outFile = "files/outfile.txt";
 
         // create and write
         try (BufferedWriter buffer = new BufferedWriter(new FileWriter(outFile))) {
@@ -69,14 +69,14 @@ public class Main {
 
         // write binary
         List<String> list = Arrays.asList("george", "maria");
-        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("binary.dat"))) {
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("files/binary.dat"))) {
             oos.writeObject(list);
         } catch (IOException e) {
             e.printStackTrace();
         }
 
         //load binary
-        try (ObjectInputStream oos = new ObjectInputStream(new FileInputStream("binary.dat"))) {
+        try (ObjectInputStream oos = new ObjectInputStream(new FileInputStream("files/binary.dat"))) {
             list = (List<String>) oos.readObject();
             System.out.println(list);
         } catch (IOException | ClassNotFoundException e) {
