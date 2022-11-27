@@ -30,6 +30,32 @@ public class Main {
             e.printStackTrace();
         }
 
+        // read all lines
+        try (BufferedReader buffer = new BufferedReader(new FileReader(outFile))) {
+            String line = buffer.readLine();
+            while (line != null) {
+                System.out.println(line);
+                line = buffer.readLine();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        //split lines
+        try (BufferedReader buffer = new BufferedReader(new FileReader(outFile))) {
+            String line = buffer.readLine();
+            while (line != null) {
+                String[] split = line.split("2");
+                for (String s : split) {
+                    System.out.println(s);
+                }
+                line = buffer.readLine();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
         // write binary
         List<String> list = Arrays.asList("george", "maria");
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("binary.dat"))) {
